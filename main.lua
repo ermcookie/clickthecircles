@@ -1,3 +1,4 @@
+    -- variables
 local circles = {}
 local showCircles = true
 local showUpgrades = true
@@ -6,11 +7,13 @@ local gain = 1
 local mousex, mousey = 0, 0
 local targetsamount = 1
 local baseRadius = 10
+    -- sleep function
 function sleep (a) 
     local sec = tonumber(os.clock() + a); 
     while (os.clock() < sec) do 
     end 
 end
+    -- upgrades table
 upgrades = {
     { name = "Increase Circle Size", cost = 10, effect = function()
         for _, c in ipairs(circles) do
@@ -32,7 +35,7 @@ upgrades = {
             spawnCircles(targetsamount)
     end },
 }
-
+    -- spawn circles function
 local function spawnCircles(n)
     circles = {}
     for i = 1, n do
@@ -45,7 +48,7 @@ local function spawnCircles(n)
 end
 
 spawnCircles(targetsamount)
-
+    -- update function ( draws mouse position and checks for clicks on circles and upgrade buttons )
 function love.update(dt)
     mousex = love.mouse.getX()
     mousey = love.mouse.getY()
